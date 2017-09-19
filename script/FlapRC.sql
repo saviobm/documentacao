@@ -1,186 +1,78 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     18/09/2017 21:37:17                          */
+/* Created on:     19/09/2017 12:24:52                          */
 /*==============================================================*/
 
 
-alter table ALCADAS
-   drop primary key;
-
 drop table if exists ALCADAS;
-
-alter table ANDAMENTO_ENTREGA
-   drop primary key;
 
 drop table if exists ANDAMENTO_ENTREGA;
 
-alter table CARRINHO
-   drop primary key;
-
 drop table if exists CARRINHO;
-
-alter table CARRINHO_PRODUTO
-   drop primary key;
 
 drop table if exists CARRINHO_PRODUTO;
 
-alter table CATEGORIA
-   drop primary key;
-
 drop table if exists CATEGORIA;
-
-alter table CLASSIFICACAO_USUARIO
-   drop primary key;
 
 drop table if exists CLASSIFICACAO_USUARIO;
 
-alter table COMBO
-   drop primary key;
-
 drop table if exists COMBO;
-
-alter table EMAIL
-   drop primary key;
 
 drop table if exists EMAIL;
 
-alter table ENDERECO
-   drop primary key;
-
 drop table if exists ENDERECO;
-
-alter table ESTOQUE
-   drop primary key;
 
 drop table if exists ESTOQUE;
 
-alter table FORMA_PAGAMENTO
-   drop primary key;
-
 drop table if exists FORMA_PAGAMENTO;
-
-alter table FORNECEDOR
-   drop primary key;
 
 drop table if exists FORNECEDOR;
 
-alter table HISTORICO
-   drop primary key;
-
 drop table if exists HISTORICO;
-
-alter table IMAGEM
-   drop primary key;
 
 drop table if exists IMAGEM;
 
-alter table INDICACAO
-   drop primary key;
-
 drop table if exists INDICACAO;
-
-alter table ITEM_PRODUTO
-   drop primary key;
 
 drop table if exists ITEM_PRODUTO;
 
-alter table ITENCAO_PRODUTO
-   drop primary key;
-
 drop table if exists ITENCAO_PRODUTO;
-
-alter table MENSAGEM
-   drop primary key;
 
 drop table if exists MENSAGEM;
 
-alter table PAGAMENTO
-   drop primary key;
-
 drop table if exists PAGAMENTO;
-
-alter table PEDIDO
-   drop primary key;
 
 drop table if exists PEDIDO;
 
-alter table PONTOS
-   drop primary key;
-
 drop table if exists PONTOS;
-
-alter table PONTOS_USUARIO
-   drop primary key;
 
 drop table if exists PONTOS_USUARIO;
 
-alter table PRODUTO
-   drop primary key;
-
 drop table if exists PRODUTO;
-
-alter table PRODUTO_FORNECEDOR
-   drop primary key;
 
 drop table if exists PRODUTO_FORNECEDOR;
 
-alter table PRODUTO_ITEM_PRODUTO
-   drop primary key;
-
 drop table if exists PRODUTO_ITEM_PRODUTO;
-
-alter table QUALIFICACAO_PRODUTO
-   drop primary key;
 
 drop table if exists QUALIFICACAO_PRODUTO;
 
-alter table STATUS
-   drop primary key;
-
 drop table if exists STATUS;
-
-alter table SUB_CATEGORIA
-   drop primary key;
 
 drop table if exists SUB_CATEGORIA;
 
-alter table TIPO_ANDAMENTO_ENTREGA
-   drop primary key;
-
 drop table if exists TIPO_ANDAMENTO_ENTREGA;
-
-alter table TIPO_TRANSPORTE
-   drop primary key;
 
 drop table if exists TIPO_TRANSPORTE;
 
-alter table TRANSPORTADORA
-   drop primary key;
-
 drop table if exists TRANSPORTADORA;
-
-alter table TRANSPORTADOR_TIPO_TRANSPORTE
-   drop primary key;
 
 drop table if exists TRANSPORTADOR_TIPO_TRANSPORTE;
 
-alter table UF
-   drop primary key;
-
 drop table if exists UF;
-
-alter table UNIDADE
-   drop primary key;
 
 drop table if exists UNIDADE;
 
-alter table USUARIO
-   drop primary key;
-
 drop table if exists USUARIO;
-
-alter table USUARIO_ALCADA
-   drop primary key;
 
 drop table if exists USUARIO_ALCADA;
 
@@ -192,11 +84,10 @@ create table ALCADAS
    ID_ALCADAS           smallint not null,
    ID_ALCADAS_PAI       smallint,
    SIGLA                char(3),
-   DESCRICAO            varchar(300)
-);
-
-alter table ALCADAS
-   add primary key (ID_ALCADAS);
+   DESCRICAO            varchar(300),
+   primary key (ID_ALCADAS)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: ANDAMENTO_ENTREGA                                     */
@@ -206,11 +97,10 @@ create table ANDAMENTO_ENTREGA
    ID_ANDAMENTO_ENTREGA smallint not null,
    ID_TIPO_ANDAMENTO_ENTREGA smallint,
    OBSERVACAO           varchar(200),
-   COD_RASTREAMENTO     varchar(100)
-);
-
-alter table ANDAMENTO_ENTREGA
-   add primary key (ID_ANDAMENTO_ENTREGA);
+   COD_RASTREAMENTO     varchar(100),
+   primary key (ID_ANDAMENTO_ENTREGA)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: CARRINHO                                              */
@@ -219,11 +109,9 @@ create table CARRINHO
 (
    ID_CARRINHO          smallint not null,
    ID_USUARIO           smallint,
-   ID_IMAGEM            smallint
+   ID_IMAGEM            smallint,
+   primary key (ID_CARRINHO)
 );
-
-alter table CARRINHO
-   add primary key (ID_CARRINHO);
 
 /*==============================================================*/
 /* Table: CARRINHO_PRODUTO                                      */
@@ -232,11 +120,9 @@ create table CARRINHO_PRODUTO
 (
    ID_CARRINHO          smallint not null,
    ID_PRODUTO           smallint not null,
-   QUANTIDADE           smallint(6)
+   QUANTIDADE           smallint(6),
+   primary key (ID_CARRINHO, ID_PRODUTO)
 );
-
-alter table CARRINHO_PRODUTO
-   add primary key (ID_CARRINHO, ID_PRODUTO);
 
 /*==============================================================*/
 /* Table: CATEGORIA                                             */
@@ -245,11 +131,10 @@ create table CATEGORIA
 (
    ID_CATEGORIA         smallint not null,
    DESCRICAO            varchar(200),
-   ATIVO                boolean
-);
-
-alter table CATEGORIA
-   add primary key (ID_CATEGORIA);
+   ATIVO                boolean,
+   primary key (ID_CATEGORIA)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: CLASSIFICACAO_USUARIO                                 */
@@ -258,11 +143,10 @@ create table CLASSIFICACAO_USUARIO
 (
    ID_CLASSIFICACAO_USUARIO smallint not null,
    SIGLA                varchar(4),
-   DESCRICAO            varchar(200)
-);
-
-alter table CLASSIFICACAO_USUARIO
-   add primary key (ID_CLASSIFICACAO_USUARIO);
+   DESCRICAO            varchar(200),
+   primary key (ID_CLASSIFICACAO_USUARIO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: COMBO                                                 */
@@ -272,11 +156,10 @@ create table COMBO
    ID_COMBO             smallint not null,
    ID_PRODUTO           smallint,
    OBSERVACAO           varchar(300),
-   ATIVO                boolean
-);
-
-alter table COMBO
-   add primary key (ID_COMBO);
+   ATIVO                boolean,
+   primary key (ID_COMBO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: EMAIL                                                 */
@@ -286,11 +169,10 @@ create table EMAIL
    ID_EMAIL             smallint not null,
    ID_USUARIO           smallint,
    EMAIL                varchar(100),
-   ATIVO                boolean
-);
-
-alter table EMAIL
-   add primary key (ID_EMAIL);
+   ATIVO                boolean,
+   primary key (ID_EMAIL)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: ENDERECO                                              */
@@ -303,11 +185,10 @@ create table ENDERECO
    DESCRICAO            varchar(300),
    COMPLEMENTO          varchar(100),
    CEP                  varchar(8),
-   ENTREGA              boolean
-);
-
-alter table ENDERECO
-   add primary key (ID_ENDERECO);
+   ENTREGA              boolean,
+   primary key (ID_ENDERECO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: ESTOQUE                                               */
@@ -320,11 +201,10 @@ create table ESTOQUE
    DATA_EXPIRACAO       date,
    QUANTIDADE           smallint,
    PREC_DESCONTO        float(4,2),
-   ESTIMATIVA_VENDA     smallint
-);
-
-alter table ESTOQUE
-   add primary key (ID_ESTOQUE);
+   ESTIMATIVA_VENDA     smallint,
+   primary key (ID_ESTOQUE)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: FORMA_PAGAMENTO                                       */
@@ -332,11 +212,10 @@ alter table ESTOQUE
 create table FORMA_PAGAMENTO
 (
    ID_FORMA_PAGAMENTO   smallint not null,
-   DESCRICAO            varchar(100)
-);
-
-alter table FORMA_PAGAMENTO
-   add primary key (ID_FORMA_PAGAMENTO);
+   DESCRICAO            varchar(100),
+   primary key (ID_FORMA_PAGAMENTO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: FORNECEDOR                                            */
@@ -347,11 +226,10 @@ create table FORNECEDOR
    NOME_FANTASIA        varchar(200),
    CNPJ                 smallint(14),
    DESCRICAO            varchar(200),
-   OBSERVACAO           varchar(300)
-);
-
-alter table FORNECEDOR
-   add primary key (ID_FORNECEDOR);
+   OBSERVACAO           varchar(300),
+   primary key (ID_FORNECEDOR)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: HISTORICO                                             */
@@ -360,11 +238,10 @@ create table HISTORICO
 (
    ID_HISTORICO         smallint not null,
    ID_PEDIDO            smallint,
-   OBSERVACAO           varchar(300)
-);
-
-alter table HISTORICO
-   add primary key (ID_HISTORICO);
+   OBSERVACAO           varchar(300),
+   primary key (ID_HISTORICO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: IMAGEM                                                */
@@ -373,11 +250,9 @@ create table IMAGEM
 (
    ID_IMAGEM            smallint not null,
    IMAGEM               blob,
-   DESCRICAO            varchar(200)
+   DESCRICAO            varchar(200),
+   primary key (ID_IMAGEM)
 );
-
-alter table IMAGEM
-   add primary key (ID_IMAGEM);
 
 /*==============================================================*/
 /* Table: INDICACAO                                             */
@@ -389,11 +264,10 @@ create table INDICACAO
    ID_PRODUTO           smallint,
    ID_COMBO             smallint,
    ID_EMAIL             smallint,
-   OBSERVACAO           varchar(300)
-);
-
-alter table INDICACAO
-   add primary key (ID_INDICACAO);
+   OBSERVACAO           varchar(300),
+   primary key (ID_INDICACAO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: ITEM_PRODUTO                                          */
@@ -405,11 +279,10 @@ create table ITEM_PRODUTO
    ID_IMAGEM            smallint,
    DESCRICAO            varchar(300),
    DATA_VENCIMENTO      date,
-   VALOR                double(12,2)
-);
-
-alter table ITEM_PRODUTO
-   add primary key (ID_ITEM_PRODUTO);
+   VALOR                double(12,2),
+   primary key (ID_ITEM_PRODUTO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: ITENCAO_PRODUTO                                       */
@@ -418,11 +291,10 @@ create table ITENCAO_PRODUTO
 (
    ID_INTENCAO_PRODUTO  smallint not null,
    ID_USUARIO           smallint,
-   ID_PRODUTO           smallint
-);
-
-alter table ITENCAO_PRODUTO
-   add primary key (ID_INTENCAO_PRODUTO);
+   ID_PRODUTO           smallint,
+   primary key (ID_INTENCAO_PRODUTO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: MENSAGEM                                              */
@@ -431,11 +303,10 @@ create table MENSAGEM
 (
    ID_MENSAGEM          smallint not null,
    ID_USUARIO           smallint,
-   DESCRICAO            varchar(300)
-);
-
-alter table MENSAGEM
-   add primary key (ID_MENSAGEM);
+   DESCRICAO            varchar(300),
+   primary key (ID_MENSAGEM)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: PAGAMENTO                                             */
@@ -446,11 +317,10 @@ create table PAGAMENTO
    ID_FORMA_PAGAMENTO   smallint,
    ID_IMAGEM            smallint,
    ID_PEDIDO            smallint,
-   ID_STATUS            smallint
-);
-
-alter table PAGAMENTO
-   add primary key (ID_PAGAMENTO);
+   ID_STATUS            smallint,
+   primary key (ID_PAGAMENTO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: PEDIDO                                                */
@@ -467,11 +337,10 @@ create table PEDIDO
    VALOR_TOTAL          double(12,2),
    DATA_ABERTURA        datetime,
    DATA_ENTREGA         datetime,
-   NUM_PEDIDO           varchar(100)
-);
-
-alter table PEDIDO
-   add primary key (ID_PEDIDO);
+   NUM_PEDIDO           varchar(100),
+   primary key (ID_PEDIDO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: PONTOS                                                */
@@ -483,11 +352,10 @@ create table PONTOS
    QTD_PONTOS_PEDIDO    smallint,
    DESCRICAO            varchar(200),
    PEDIDO               boolean,
-   VALOR                boolean
-);
-
-alter table PONTOS
-   add primary key (ID_PONTOS);
+   VALOR                boolean,
+   primary key (ID_PONTOS)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: PONTOS_USUARIO                                        */
@@ -497,11 +365,10 @@ create table PONTOS_USUARIO
    ID_PONTOS_USUARIO    smallint not null,
    ID_PONTOS            smallint,
    ID_PEDIDO            smallint,
-   QTD_PONTOS           smallint
-);
-
-alter table PONTOS_USUARIO
-   add primary key (ID_PONTOS_USUARIO);
+   QTD_PONTOS           smallint,
+   primary key (ID_PONTOS_USUARIO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: PRODUTO                                               */
@@ -515,11 +382,10 @@ create table PRODUTO
    ID_ESTOQUE           smallint,
    DESCRICAO            varchar(200),
    VALOR                double(12,2),
-   ATIVO                boolean
-);
-
-alter table PRODUTO
-   add primary key (ID_PRODUTO);
+   ATIVO                boolean,
+   primary key (ID_PRODUTO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: PRODUTO_FORNECEDOR                                    */
@@ -531,11 +397,10 @@ create table PRODUTO_FORNECEDOR
    ID_FORNECEDOR        smallint,
    VALOR                double(12,2),
    PERC_DESCONTO        float(4,2),
-   QTD_DESCONTO         smallint
-);
-
-alter table PRODUTO_FORNECEDOR
-   add primary key (ID_PRODUTO_FORNECEDOR);
+   QTD_DESCONTO         smallint,
+   primary key (ID_PRODUTO_FORNECEDOR)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: PRODUTO_ITEM_PRODUTO                                  */
@@ -543,11 +408,9 @@ alter table PRODUTO_FORNECEDOR
 create table PRODUTO_ITEM_PRODUTO
 (
    ID_ITEM_PRODUTO      smallint not null,
-   ID_PRODUTO           smallint not null
+   ID_PRODUTO           smallint not null,
+   primary key (ID_ITEM_PRODUTO, ID_PRODUTO)
 );
-
-alter table PRODUTO_ITEM_PRODUTO
-   add primary key (ID_ITEM_PRODUTO, ID_PRODUTO);
 
 /*==============================================================*/
 /* Table: QUALIFICACAO_PRODUTO                                  */
@@ -558,11 +421,10 @@ create table QUALIFICACAO_PRODUTO
    ID_USUARIO           smallint,
    ID_PRODUTO           smallint,
    QTD_ESTRELAS         smallint(5),
-   OBSERVACAO           varchar(200)
-);
-
-alter table QUALIFICACAO_PRODUTO
-   add primary key (ID_QUALIFICACAO_PRODUTO);
+   OBSERVACAO           varchar(200),
+   primary key (ID_QUALIFICACAO_PRODUTO)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: STATUS                                                */
@@ -570,11 +432,10 @@ alter table QUALIFICACAO_PRODUTO
 create table STATUS
 (
    ID_STATUS            smallint not null,
-   DESCRICAO            varchar(200)
-);
-
-alter table STATUS
-   add primary key (ID_STATUS);
+   DESCRICAO            varchar(200),
+   primary key (ID_STATUS)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: SUB_CATEGORIA                                         */
@@ -583,11 +444,10 @@ create table SUB_CATEGORIA
 (
    ID_SUB_CATEGORIA     smallint not null,
    ID_CATEGORIA         smallint,
-   DESCRICAO            varchar(100)
-);
-
-alter table SUB_CATEGORIA
-   add primary key (ID_SUB_CATEGORIA);
+   DESCRICAO            varchar(100),
+   primary key (ID_SUB_CATEGORIA)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: TIPO_ANDAMENTO_ENTREGA                                */
@@ -595,11 +455,10 @@ alter table SUB_CATEGORIA
 create table TIPO_ANDAMENTO_ENTREGA
 (
    ID_TIPO_ANDAMENTO_ENTREGA smallint not null,
-   DESCRICAO            varchar(200)
-);
-
-alter table TIPO_ANDAMENTO_ENTREGA
-   add primary key (ID_TIPO_ANDAMENTO_ENTREGA);
+   DESCRICAO            varchar(200),
+   primary key (ID_TIPO_ANDAMENTO_ENTREGA)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: TIPO_TRANSPORTE                                       */
@@ -610,11 +469,10 @@ create table TIPO_TRANSPORTE
    ID_UNIDADE           smallint,
    DESCRICAO            varchar(200),
    SIGLA                char(2),
-   VALOR_UNIDADE        float(4,2)
-);
-
-alter table TIPO_TRANSPORTE
-   add primary key (ID_TIPO_TRANSPORTE);
+   VALOR_UNIDADE        float(4,2),
+   primary key (ID_TIPO_TRANSPORTE)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: TRANSPORTADORA                                        */
@@ -625,11 +483,10 @@ create table TRANSPORTADORA
    ID_ENDERECO          smallint,
    NOME_FANTASIA        varchar(200),
    CNPJ                 varchar(14),
-   DESCRICAO            varchar(200)
-);
-
-alter table TRANSPORTADORA
-   add primary key (ID_TRANSPORTADORA);
+   DESCRICAO            varchar(200),
+   primary key (ID_TRANSPORTADORA)
+)
+auto_increment = ?;
 
 /*==============================================================*/
 /* Table: TRANSPORTADOR_TIPO_TRANSPORTE                         */
@@ -637,11 +494,9 @@ alter table TRANSPORTADORA
 create table TRANSPORTADOR_TIPO_TRANSPORTE
 (
    ID_TRANSPORTADORA    smallint not null,
-   ID_TIPO_TRANSPORTE   smallint not null
+   ID_TIPO_TRANSPORTE   smallint not null,
+   primary key (ID_TRANSPORTADORA, ID_TIPO_TRANSPORTE)
 );
-
-alter table TRANSPORTADOR_TIPO_TRANSPORTE
-   add primary key (ID_TRANSPORTADORA, ID_TIPO_TRANSPORTE);
 
 /*==============================================================*/
 /* Table: UF                                                    */
@@ -649,11 +504,9 @@ alter table TRANSPORTADOR_TIPO_TRANSPORTE
 create table UF
 (
    ID_UF                smallint not null,
-   SIGLA                char(2)
+   SIGLA                char(2),
+   primary key (ID_UF)
 );
-
-alter table UF
-   add primary key (ID_UF);
 
 /*==============================================================*/
 /* Table: UNIDADE                                               */
@@ -663,11 +516,9 @@ create table UNIDADE
    ID_UNIDADE           smallint not null,
    SIGLA                char(2),
    DESCRICAO            varchar(100),
-   VALOR                smallint
+   VALOR                smallint,
+   primary key (ID_UNIDADE)
 );
-
-alter table UNIDADE
-   add primary key (ID_UNIDADE);
 
 /*==============================================================*/
 /* Table: USUARIO                                               */
@@ -683,13 +534,12 @@ create table USUARIO
    SENHA                varchar(20),
    CPF                  varchar(11),
    DATA_NASCIMENTO      date,
-   QTD_PEDIDOS          smallint
-);
+   QTD_PEDIDOS          smallint,
+   primary key (ID_USUARIO)
+)
+auto_increment = ?;
 
-alter table USUARIO comment 'Tabela com os usu√°rios do sistema FlapRC.';
-
-alter table USUARIO
-   add primary key (ID_USUARIO);
+alter table USUARIO comment 'Tabela com os usu·rios do sistema FlapRC.';
 
 /*==============================================================*/
 /* Table: USUARIO_ALCADA                                        */
@@ -697,11 +547,9 @@ alter table USUARIO
 create table USUARIO_ALCADA
 (
    ID_ALCADAS           smallint not null,
-   ID_USUARIO           smallint not null
+   ID_USUARIO           smallint not null,
+   primary key (ID_ALCADAS, ID_USUARIO)
 );
-
-alter table USUARIO_ALCADA
-   add primary key (ID_ALCADAS, ID_USUARIO);
 
 alter table ALCADAS add constraint FK_REFERENCE_32 foreign key (ID_ALCADAS_PAI)
       references ALCADAS (ID_ALCADAS) on delete restrict on update restrict;
