@@ -1,700 +1,699 @@
 /*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     19/09/2017 12:24:52                          */
+/* dbms name:      mysql 5.0                                    */
+/* created on:     19/09/2017 12:24:52                          */
 /*==============================================================*/
 
 
-drop table if exists ALCADAS;
+drop table if exists alcadas;
 
-drop table if exists ANDAMENTO_ENTREGA;
+drop table if exists andamento_entrega;
 
-drop table if exists CARRINHO;
+drop table if exists carrinho;
 
-drop table if exists CARRINHO_PRODUTO;
+drop table if exists carrinho_produto;
 
-drop table if exists CATEGORIA;
+drop table if exists categoria;
 
-drop table if exists CLASSIFICACAO_USUARIO;
+drop table if exists classificacao_usuario;
 
-drop table if exists COMBO;
+drop table if exists combo;
 
-drop table if exists EMAIL;
+drop table if exists email;
 
-drop table if exists ENDERECO;
+drop table if exists endereco;
 
-drop table if exists ESTOQUE;
+drop table if exists estoque;
 
-drop table if exists FORMA_PAGAMENTO;
+drop table if exists forma_pagamento;
 
-drop table if exists FORNECEDOR;
+drop table if exists fornecedor;
 
-drop table if exists HISTORICO;
+drop table if exists historico;
 
-drop table if exists IMAGEM;
+drop table if exists imagem;
 
-drop table if exists INDICACAO;
+drop table if exists indicacao;
 
-drop table if exists ITEM_PRODUTO;
+drop table if exists item_produto;
 
-drop table if exists ITENCAO_PRODUTO;
+drop table if exists itencao_produto;
 
-drop table if exists MENSAGEM;
+drop table if exists mensagem;
 
-drop table if exists PAGAMENTO;
+drop table if exists pagamento;
 
-drop table if exists PEDIDO;
+drop table if exists pedido;
 
-drop table if exists PONTOS;
+drop table if exists pontos;
 
-drop table if exists PONTOS_USUARIO;
+drop table if exists pontos_usuario;
 
-drop table if exists PRODUTO;
+drop table if exists produto;
 
-drop table if exists PRODUTO_FORNECEDOR;
+drop table if exists produto_fornecedor;
 
-drop table if exists PRODUTO_ITEM_PRODUTO;
+drop table if exists produto_item_produto;
 
-drop table if exists QUALIFICACAO_PRODUTO;
+drop table if exists qualificacao_produto;
 
-drop table if exists STATUS;
+drop table if exists status;
 
-drop table if exists SUB_CATEGORIA;
+drop table if exists sub_categoria;
 
-drop table if exists TIPO_ANDAMENTO_ENTREGA;
+drop table if exists tipo_andamento_entrega;
 
-drop table if exists TIPO_TRANSPORTE;
+drop table if exists tipo_transporte;
 
-drop table if exists TRANSPORTADORA;
+drop table if exists transportadora;
 
-drop table if exists TRANSPORTADOR_TIPO_TRANSPORTE;
+drop table if exists transportador_tipo_transporte;
 
-drop table if exists UF;
+drop table if exists uf;
 
-drop table if exists UNIDADE;
+drop table if exists unidade;
 
-drop table if exists USUARIO;
+drop table if exists usuario;
 
-drop table if exists USUARIO_ALCADA;
+drop table if exists usuario_alcada;
 
 /*==============================================================*/
-/* Table: ALCADAS                                               */
+/* table: alcadas                                               */
 /*==============================================================*/
-create table ALCADAS
+create table alcadas
 (
-   ID_ALCADAS           smallint not null AUTO_INCREMENT,
-   ID_ALCADAS_PAI       smallint,
-   SIGLA                char(3),
-   DESCRICAO            varchar(300),
-   primary key (ID_ALCADAS)
+   id_alcadas           smallint not null auto_increment,
+   id_alcadas_pai       smallint,
+   sigla                char(3),
+   descricao            varchar(300),
+   primary key (id_alcadas)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: ANDAMENTO_ENTREGA                                     */
+/* table: andamento_entrega                                     */
 /*==============================================================*/
-create table ANDAMENTO_ENTREGA
+create table andamento_entrega
 (
-   ID_ANDAMENTO_ENTREGA smallint not null AUTO_INCREMENT,
-   ID_TIPO_ANDAMENTO_ENTREGA smallint,
-   OBSERVACAO           varchar(200),
-   COD_RASTREAMENTO     varchar(100),
-   primary key (ID_ANDAMENTO_ENTREGA)
+   id_andamento_entrega smallint not null auto_increment,
+   id_tipo_andamento_entrega smallint,
+   observacao           varchar(200),
+   cod_rastreamento     varchar(100),
+   primary key (id_andamento_entrega)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: CARRINHO                                              */
+/* table: carrinho                                              */
 /*==============================================================*/
-create table CARRINHO
+create table carrinho
 (
-   ID_CARRINHO          smallint not null AUTO_INCREMENT,
-   ID_USUARIO           smallint,
-   ID_IMAGEM            smallint,
-   primary key (ID_CARRINHO)
+   id_carrinho          smallint not null auto_increment,
+   id_usuario           smallint,
+   id_imagem            smallint,
+   primary key (id_carrinho)
 );
 
 /*==============================================================*/
-/* Table: CARRINHO_PRODUTO                                      */
+/* table: carrinho_produto                                      */
 /*==============================================================*/
-create table CARRINHO_PRODUTO
+create table carrinho_produto
 (
-   ID_CARRINHO          smallint not null,
-   ID_PRODUTO           smallint not null,
-   QUANTIDADE           smallint(6),
-   primary key (ID_CARRINHO, ID_PRODUTO)
+   id_carrinho          smallint not null,
+   id_produto           smallint not null,
+   quantidade           smallint(6),
+   primary key (id_carrinho, id_produto)
 );
 
 /*==============================================================*/
-/* Table: CATEGORIA                                             */
+/* table: categoria                                             */
 /*==============================================================*/
-create table CATEGORIA
+create table categoria
 (
-   ID_CATEGORIA         smallint not null AUTO_INCREMENT,
-   DESCRICAO            varchar(200),
-   ATIVO                boolean,
-   primary key (ID_CATEGORIA)
+   id_categoria         smallint not null auto_increment,
+   descricao            varchar(200),
+   ativo                boolean,
+   primary key (id_categoria)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: CLASSIFICACAO_USUARIO                                 */
+/* table: classificacao_usuario                                 */
 /*==============================================================*/
-create table CLASSIFICACAO_USUARIO
+create table classificacao_usuario
 (
-   ID_CLASSIFICACAO_USUARIO smallint not null AUTO_INCREMENT,
-   SIGLA                varchar(4),
-   DESCRICAO            varchar(200),
-   primary key (ID_CLASSIFICACAO_USUARIO)
+   id_classificacao_usuario smallint not null auto_increment,
+   sigla                varchar(4),
+   descricao            varchar(200),
+   primary key (id_classificacao_usuario)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: COMBO                                                 */
+/* table: combo                                                 */
 /*==============================================================*/
-create table COMBO
+create table combo
 (
-   ID_COMBO             smallint not null AUTO_INCREMENT,
-   ID_PRODUTO           smallint,
-   OBSERVACAO           varchar(300),
-   ATIVO                boolean,
-   primary key (ID_COMBO)
+   id_combo             smallint not null auto_increment,
+   id_produto           smallint,
+   observacao           varchar(300),
+   ativo                boolean,
+   primary key (id_combo)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: EMAIL                                                 */
+/* table: email                                                 */
 /*==============================================================*/
-create table EMAIL
+create table email
 (
-   ID_EMAIL             smallint not null AUTO_INCREMENT,
-   ID_USUARIO           smallint,
-   EMAIL                varchar(100),
-   ATIVO                boolean,
-   primary key (ID_EMAIL)
+   id_email             smallint not null auto_increment,
+   id_usuario           smallint,
+   email                varchar(100),
+   ativo                boolean,
+   primary key (id_email)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: ENDERECO                                              */
+/* table: endereco                                              */
 /*==============================================================*/
-create table ENDERECO
+create table endereco
 (
-   ID_ENDERECO          smallint not null AUTO_INCREMENT,
-   ID_UF                smallint,
-   ID_USUARIO           smallint,
-   DESCRICAO            varchar(300),
-   COMPLEMENTO          varchar(100),
-   CEP                  varchar(8),
-   ENTREGA              boolean,
-   primary key (ID_ENDERECO)
+   id_endereco          smallint not null auto_increment,
+   id_uf                smallint,
+   id_usuario           smallint,
+   descricao            varchar(300),
+   complemento          varchar(100),
+   cep                  varchar(8),
+   entrega              boolean,
+   primary key (id_endereco)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: ESTOQUE                                               */
+/* table: estoque                                               */
 /*==============================================================*/
-create table ESTOQUE
+create table estoque
 (
-   ID_ESTOQUE           smallint not null AUTO_INCREMENT,
-   VALOR_ENTRADA        double(12,2),
-   DATA_ENTRADA         date,
-   DATA_EXPIRACAO       date,
-   QUANTIDADE           smallint,
-   PREC_DESCONTO        float(4,2),
-   ESTIMATIVA_VENDA     smallint,
-   primary key (ID_ESTOQUE)
+   id_estoque           smallint not null auto_increment,
+   valor_entrada        double(12,2),
+   data_entrada         date,
+   data_expiracao       date,
+   quantidade           smallint,
+   prec_desconto        float(4,2),
+   estimativa_venda     smallint,
+   primary key (id_estoque)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: FORMA_PAGAMENTO                                       */
+/* table: forma_pagamento                                       */
 /*==============================================================*/
-create table FORMA_PAGAMENTO
+create table forma_pagamento
 (
-   ID_FORMA_PAGAMENTO   smallint not null AUTO_INCREMENT,
-   DESCRICAO            varchar(100),
-   primary key (ID_FORMA_PAGAMENTO)
+   id_forma_pagamento   smallint not null auto_increment,
+   descricao            varchar(100),
+   primary key (id_forma_pagamento)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: FORNECEDOR                                            */
+/* table: fornecedor                                            */
 /*==============================================================*/
-create table FORNECEDOR
+create table fornecedor
 (
-   ID_FORNECEDOR        smallint not null AUTO_INCREMENT,
-   NOME_FANTASIA        varchar(200),
-   CNPJ                 smallint(14),
-   DESCRICAO            varchar(200),
-   OBSERVACAO           varchar(300),
-   primary key (ID_FORNECEDOR)
+   id_fornecedor        smallint not null auto_increment,
+   nome_fantasia        varchar(200),
+   cnpj                 smallint(14),
+   descricao            varchar(200),
+   observacao           varchar(300),
+   primary key (id_fornecedor)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: HISTORICO                                             */
+/* table: historico                                             */
 /*==============================================================*/
-create table HISTORICO
+create table historico
 (
-   ID_HISTORICO         smallint not null AUTO_INCREMENT,
-   ID_PEDIDO            smallint,
-   OBSERVACAO           varchar(300),
-   primary key (ID_HISTORICO)
+   id_historico         smallint not null auto_increment,
+   id_pedido            smallint,
+   observacao           varchar(300),
+   primary key (id_historico)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: IMAGEM                                                */
+/* table: imagem                                                */
 /*==============================================================*/
-create table IMAGEM
+create table imagem
 (
-   ID_IMAGEM            smallint not null AUTO_INCREMENT,
-   IMAGEM               blob,
-   DESCRICAO            varchar(200),
-   primary key (ID_IMAGEM)
+   id_imagem            smallint not null auto_increment,
+   imagem               blob,
+   descricao            varchar(200),
+   primary key (id_imagem)
 );
 
 /*==============================================================*/
-/* Table: INDICACAO                                             */
+/* table: indicacao                                             */
 /*==============================================================*/
-create table INDICACAO
+create table indicacao
 (
-   ID_INDICACAO         smallint not null AUTO_INCREMENT,
-   ID_USUARIO           smallint,
-   ID_PRODUTO           smallint,
-   ID_COMBO             smallint,
-   ID_EMAIL             smallint,
-   OBSERVACAO           varchar(300),
-   primary key (ID_INDICACAO)
+   id_indicacao         smallint not null auto_increment,
+   id_usuario           smallint,
+   id_produto           smallint,
+   id_combo             smallint,
+   id_email             smallint,
+   observacao           varchar(300),
+   primary key (id_indicacao)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: ITEM_PRODUTO                                          */
+/* table: item_produto                                          */
 /*==============================================================*/
-create table ITEM_PRODUTO
+create table item_produto
 (
-   ID_ITEM_PRODUTO      smallint not null AUTO_INCREMENT,
-   ID_UNIDADE           smallint,
-   ID_IMAGEM            smallint,
-   DESCRICAO            varchar(300),
-   DATA_VENCIMENTO      date,
-   VALOR                double(12,2),
-   primary key (ID_ITEM_PRODUTO)
+   id_item_produto      smallint not null auto_increment,
+   id_unidade           smallint,
+   id_imagem            smallint,
+   descricao            varchar(300),
+   data_vencimento      date,
+   valor                double(12,2),
+   primary key (id_item_produto)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: ITENCAO_PRODUTO                                       */
+/* table: itencao_produto                                       */
 /*==============================================================*/
-create table ITENCAO_PRODUTO
+create table itencao_produto
 (
-   ID_INTENCAO_PRODUTO  smallint not null AUTO_INCREMENT,
-   ID_USUARIO           smallint,
-   ID_PRODUTO           smallint,
-   primary key (ID_INTENCAO_PRODUTO)
+   id_intencao_produto  smallint not null auto_increment,
+   id_usuario           smallint,
+   id_produto           smallint,
+   primary key (id_intencao_produto)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: MENSAGEM                                              */
+/* table: mensagem                                              */
 /*==============================================================*/
-create table MENSAGEM
+create table mensagem
 (
-   ID_MENSAGEM          smallint not null AUTO_INCREMENT,
-   ID_USUARIO           smallint,
-   DESCRICAO            varchar(300),
-   primary key (ID_MENSAGEM)
+   id_mensagem          smallint not null auto_increment,
+   id_usuario           smallint,
+   descricao            varchar(300),
+   primary key (id_mensagem)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: PAGAMENTO                                             */
+/* table: pagamento                                             */
 /*==============================================================*/
-create table PAGAMENTO
+create table pagamento
 (
-   ID_PAGAMENTO         smallint not null AUTO_INCREMENT,
-   ID_FORMA_PAGAMENTO   smallint,
-   ID_IMAGEM            smallint,
-   ID_PEDIDO            smallint,
-   ID_STATUS            smallint,
-   primary key (ID_PAGAMENTO)
+   id_pagamento         smallint not null auto_increment,
+   id_forma_pagamento   smallint,
+   id_imagem            smallint,
+   id_pedido            smallint,
+   id_status            smallint,
+   primary key (id_pagamento)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: PEDIDO                                                */
+/* table: pedido                                                */
 /*==============================================================*/
-create table PEDIDO
+create table pedido
 (
-   ID_PEDIDO            smallint not null AUTO_INCREMENT,
-   ID_USUARIO           smallint,
-   ID_TRANSPORTADORA    smallint,
-   ID_CARRINHO          smallint,
-   ID_ANDAMENTO_ENTREGA smallint,
-   DATA_FINALIZACAO     datetime,
-   VALOR_FRETE          float(5,2),
-   VALOR_TOTAL          double(12,2),
-   DATA_ABERTURA        datetime,
-   DATA_ENTREGA         datetime,
-   NUM_PEDIDO           varchar(100),
-   primary key (ID_PEDIDO)
+   id_pedido            smallint not null auto_increment,
+   id_usuario           smallint,
+   id_transportadora    smallint,
+   id_carrinho          smallint,
+   id_andamento_entrega smallint,
+   data_finalizacao     datetime,
+   valor_frete          float(5,2),
+   valor_total          double(12,2),
+   data_abertura        datetime,
+   data_entrega         datetime,
+   num_pedido           varchar(100),
+   primary key (id_pedido)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: PONTOS                                                */
+/* table: pontos                                                */
 /*==============================================================*/
-create table PONTOS
+create table pontos
 (
-   ID_PONTOS            smallint not null AUTO_INCREMENT,
-   QTD_PONTOS_VALOR     float(4,2),
-   QTD_PONTOS_PEDIDO    smallint,
-   DESCRICAO            varchar(200),
-   PEDIDO               boolean,
-   VALOR                boolean,
-   primary key (ID_PONTOS)
+   id_pontos            smallint not null auto_increment,
+   qtd_pontos_valor     float(4,2),
+   qtd_pontos_pedido    smallint,
+   descricao            varchar(200),
+   pedido               boolean,
+   valor                boolean,
+   primary key (id_pontos)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: PONTOS_USUARIO                                        */
+/* table: pontos_usuario                                        */
 /*==============================================================*/
-create table PONTOS_USUARIO
+create table pontos_usuario
 (
-   ID_PONTOS_USUARIO    smallint not null AUTO_INCREMENT,
-   ID_PONTOS            smallint,
-   ID_PEDIDO            smallint,
-   QTD_PONTOS           smallint,
-   primary key (ID_PONTOS_USUARIO)
+   id_pontos_usuario    smallint not null auto_increment,
+   id_pontos            smallint,
+   id_pedido            smallint,
+   qtd_pontos           smallint,
+   primary key (id_pontos_usuario)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: PRODUTO                                               */
+/* table: produto                                               */
 /*==============================================================*/
-create table PRODUTO
+create table produto
 (
-   ID_PRODUTO           smallint not null AUTO_INCREMENT,
-   ID_UNIDADE           smallint,
-   ID_IMAGEM            smallint,
-   ID_CATEGORIA         smallint,
-   ID_ESTOQUE           smallint,
-   DESCRICAO            varchar(200),
-   VALOR                double(12,2),
-   ATIVO                boolean,
-   primary key (ID_PRODUTO)
+   id_produto           smallint not null auto_increment,
+   id_unidade           smallint,
+   id_imagem            smallint,
+   id_categoria         smallint,
+   id_estoque           smallint,
+   descricao            varchar(200),
+   valor                double(12,2),
+   ativo                boolean,
+   primary key (id_produto)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: PRODUTO_FORNECEDOR                                    */
+/* table: produto_fornecedor                                    */
 /*==============================================================*/
-create table PRODUTO_FORNECEDOR
+create table produto_fornecedor
 (
-   ID_PRODUTO_FORNECEDOR smallint not null AUTO_INCREMENT,
-   ID_PRODUTO           smallint,
-   ID_FORNECEDOR        smallint,
-   VALOR                double(12,2),
-   PERC_DESCONTO        float(4,2),
-   QTD_DESCONTO         smallint,
-   primary key (ID_PRODUTO_FORNECEDOR)
+   id_produto_fornecedor smallint not null auto_increment,
+   id_produto           smallint,
+   id_fornecedor        smallint,
+   valor                double(12,2),
+   perc_desconto        float(4,2),
+   qtd_desconto         smallint,
+   primary key (id_produto_fornecedor)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: PRODUTO_ITEM_PRODUTO                                  */
+/* table: produto_item_produto                                  */
 /*==============================================================*/
-create table PRODUTO_ITEM_PRODUTO
+create table produto_item_produto
 (
-   ID_ITEM_PRODUTO      smallint not null,
-   ID_PRODUTO           smallint not null,
-   primary key (ID_ITEM_PRODUTO, ID_PRODUTO)
+   id_item_produto      smallint not null,
+   id_produto           smallint not null,
+   primary key (id_item_produto, id_produto)
 );
 
 /*==============================================================*/
-/* Table: QUALIFICACAO_PRODUTO                                  */
+/* table: qualificacao_produto                                  */
 /*==============================================================*/
-create table QUALIFICACAO_PRODUTO
+create table qualificacao_produto
 (
-   ID_QUALIFICACAO_PRODUTO smallint not null AUTO_INCREMENT,
-   ID_USUARIO           smallint,
-   ID_PRODUTO           smallint,
-   QTD_ESTRELAS         smallint(5),
-   OBSERVACAO           varchar(200),
-   primary key (ID_QUALIFICACAO_PRODUTO)
+   id_qualificacao_produto smallint not null auto_increment,
+   id_usuario           smallint,
+   id_produto           smallint,
+   qtd_estrelas         smallint(5),
+   observacao           varchar(200),
+   primary key (id_qualificacao_produto)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: STATUS                                                */
+/* table: status                                                */
 /*==============================================================*/
-create table STATUS
+create table status
 (
-   ID_STATUS            smallint not null AUTO_INCREMENT,
-   DESCRICAO            varchar(200),
-   primary key (ID_STATUS)
+   id_status            smallint not null auto_increment,
+   descricao            varchar(200),
+   primary key (id_status)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: SUB_CATEGORIA                                         */
+/* table: sub_categoria                                         */
 /*==============================================================*/
-create table SUB_CATEGORIA
+create table sub_categoria
 (
-   ID_SUB_CATEGORIA     smallint not null AUTO_INCREMENT,
-   ID_CATEGORIA         smallint,
-   DESCRICAO            varchar(100),
-   primary key (ID_SUB_CATEGORIA)
+   id_sub_categoria     smallint not null auto_increment,
+   id_categoria         smallint,
+   descricao            varchar(100),
+   primary key (id_sub_categoria)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: TIPO_ANDAMENTO_ENTREGA                                */
+/* table: tipo_andamento_entrega                                */
 /*==============================================================*/
-create table TIPO_ANDAMENTO_ENTREGA
+create table tipo_andamento_entrega
 (
-   ID_TIPO_ANDAMENTO_ENTREGA smallint not null AUTO_INCREMENT,
-   DESCRICAO            varchar(200),
-   primary key (ID_TIPO_ANDAMENTO_ENTREGA)
+   id_tipo_andamento_entrega smallint not null auto_increment,
+   descricao            varchar(200),
+   primary key (id_tipo_andamento_entrega)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: TIPO_TRANSPORTE                                       */
+/* table: tipo_transporte                                       */
 /*==============================================================*/
-create table TIPO_TRANSPORTE
+create table tipo_transporte
 (
-   ID_TIPO_TRANSPORTE   smallint not null AUTO_INCREMENT,
-   ID_UNIDADE           smallint,
-   DESCRICAO            varchar(200),
-   SIGLA                char(2),
-   VALOR_UNIDADE        float(4,2),
-   primary key (ID_TIPO_TRANSPORTE)
+   id_tipo_transporte   smallint not null auto_increment,
+   id_unidade           smallint,
+   descricao            varchar(200),
+   sigla                char(2),
+   valor_unidade        float(4,2),
+   primary key (id_tipo_transporte)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: TRANSPORTADORA                                        */
+/* table: transportadora                                        */
 /*==============================================================*/
-create table TRANSPORTADORA
+create table transportadora
 (
-   ID_TRANSPORTADORA    smallint not null AUTO_INCREMENT,
-   ID_ENDERECO          smallint,
-   NOME_FANTASIA        varchar(200),
-   CNPJ                 varchar(14),
-   DESCRICAO            varchar(200),
-   primary key (ID_TRANSPORTADORA)
+   id_transportadora    smallint not null auto_increment,
+   id_endereco          smallint,
+   nome_fantasia        varchar(200),
+   cnpj                 varchar(14),
+   descricao            varchar(200),
+   primary key (id_transportadora)
 )
 auto_increment = 1;
 
 /*==============================================================*/
-/* Table: TRANSPORTADOR_TIPO_TRANSPORTE                         */
+/* table: transportador_tipo_transporte                         */
 /*==============================================================*/
-create table TRANSPORTADOR_TIPO_TRANSPORTE
+create table transportador_tipo_transporte
 (
-   ID_TRANSPORTADORA    smallint not null,
-   ID_TIPO_TRANSPORTE   smallint not null,
-   primary key (ID_TRANSPORTADORA, ID_TIPO_TRANSPORTE)
+   id_transportadora    smallint not null,
+   id_tipo_transporte   smallint not null,
+   primary key (id_transportadora, id_tipo_transporte)
 );
 
 /*==============================================================*/
-/* Table: UF                                                    */
+/* table: uf                                                    */
 /*==============================================================*/
-create table UF
+create table uf
 (
-   ID_UF                smallint not null AUTO_INCREMENT,
-   SIGLA                char(2),
-   primary key (ID_UF)
+   id_uf                smallint not null auto_increment,
+   sigla                char(2),
+   primary key (id_uf)
 );
 
 /*==============================================================*/
-/* Table: UNIDADE                                               */
+/* table: unidade                                               */
 /*==============================================================*/
-create table UNIDADE
+create table unidade
 (
-   ID_UNIDADE           smallint not null AUTO_INCREMENT,
-   SIGLA                char(2),
-   DESCRICAO            varchar(100),
-   VALOR                smallint,
-   primary key (ID_UNIDADE)
+   id_unidade           smallint not null auto_increment,
+   sigla                char(2),
+   descricao            varchar(100),
+   valor                smallint,
+   primary key (id_unidade)
 );
 
 /*==============================================================*/
-/* Table: USUARIO                                               */
+/* table: usuario                                               */
 /*==============================================================*/
-create table USUARIO
+create table usuario
 (
-   ID_USUARIO           smallint not null AUTO_INCREMENT,
-   ID_CLASSIFICACAO_USUARIO smallint,
-   ID_IMAGEM            smallint,
-   NOME                 varchar(300),
-   LOGIN                varchar(20),
-   ATIVO                boolean,
-   SENHA                varchar(20),
-   CPF                  varchar(11),
-   DATA_NASCIMENTO      date,
-   QTD_PEDIDOS          smallint,
-   primary key (ID_USUARIO)
+   id_usuario           smallint not null auto_increment,
+   id_classificacao_usuario smallint,
+   id_imagem            smallint,
+   nome                 varchar(300),
+   login                varchar(20),
+   ativo                boolean,
+   senha                varchar(20),
+   cpf                  varchar(11),
+   data_nascimento      date,
+   qtd_pedidos          smallint,
+   primary key (id_usuario)
 )
 auto_increment = 1;
 
-alter table USUARIO comment 'Tabela com os usu·rios do sistema FlapRC.';
+alter table usuario comment 'tabela com os usu√°rios do sistema flaprc.';
 
 /*==============================================================*/
-/* Table: USUARIO_ALCADA                                        */
+/* table: usuario_alcada                                        */
 /*==============================================================*/
-create table USUARIO_ALCADA
+create table usuario_alcada
 (
-   ID_ALCADAS           smallint not null,
-   ID_USUARIO           smallint not null,
-   primary key (ID_ALCADAS, ID_USUARIO)
+   id_alcadas           smallint not null,
+   id_usuario           smallint not null,
+   primary key (id_alcadas, id_usuario)
 );
 
-alter table ALCADAS add constraint FK_REFERENCE_32 foreign key (ID_ALCADAS_PAI)
-      references ALCADAS (ID_ALCADAS) on delete restrict on update restrict;
+alter table alcadas add constraint fk_reference_32 foreign key (id_alcadas_pai)
+      references alcadas (id_alcadas) on delete restrict on update restrict;
 
-alter table ANDAMENTO_ENTREGA add constraint FK_REFERENCE_39 foreign key (ID_TIPO_ANDAMENTO_ENTREGA)
-      references TIPO_ANDAMENTO_ENTREGA (ID_TIPO_ANDAMENTO_ENTREGA) on delete restrict on update restrict;
+alter table andamento_entrega add constraint fk_reference_39 foreign key (id_tipo_andamento_entrega)
+      references tipo_andamento_entrega (id_tipo_andamento_entrega) on delete restrict on update restrict;
 
-alter table CARRINHO add constraint FK_REFERENCE_48 foreign key (ID_USUARIO)
-      references USUARIO (ID_USUARIO) on delete restrict on update restrict;
+alter table carrinho add constraint fk_reference_48 foreign key (id_usuario)
+      references usuario (id_usuario) on delete restrict on update restrict;
 
-alter table CARRINHO add constraint FK_REFERENCE_49 foreign key (ID_IMAGEM)
-      references IMAGEM (ID_IMAGEM) on delete restrict on update restrict;
+alter table carrinho add constraint fk_reference_49 foreign key (id_imagem)
+      references imagem (id_imagem) on delete restrict on update restrict;
 
-alter table CARRINHO_PRODUTO add constraint FK_REFERENCE_46 foreign key (ID_CARRINHO)
-      references CARRINHO (ID_CARRINHO) on delete restrict on update restrict;
+alter table carrinho_produto add constraint fk_reference_46 foreign key (id_carrinho)
+      references carrinho (id_carrinho) on delete restrict on update restrict;
 
-alter table CARRINHO_PRODUTO add constraint FK_REFERENCE_47 foreign key (ID_PRODUTO)
-      references PRODUTO (ID_PRODUTO) on delete restrict on update restrict;
+alter table carrinho_produto add constraint fk_reference_47 foreign key (id_produto)
+      references produto (id_produto) on delete restrict on update restrict;
 
-alter table COMBO add constraint FK_REFERENCE_12 foreign key (ID_PRODUTO)
-      references PRODUTO (ID_PRODUTO) on delete restrict on update restrict;
+alter table combo add constraint fk_reference_12 foreign key (id_produto)
+      references produto (id_produto) on delete restrict on update restrict;
 
-alter table EMAIL add constraint FK_REFERENCE_20 foreign key (ID_USUARIO)
-      references USUARIO (ID_USUARIO) on delete restrict on update restrict;
+alter table email add constraint fk_reference_20 foreign key (id_usuario)
+      references usuario (id_usuario) on delete restrict on update restrict;
 
-alter table ENDERECO add constraint FK_REFERENCE_3 foreign key (ID_UF)
-      references UF (ID_UF) on delete restrict on update restrict;
+alter table endereco add constraint fk_reference_3 foreign key (id_uf)
+      references uf (id_uf) on delete restrict on update restrict;
 
-alter table ENDERECO add constraint FK_REFERENCE_4 foreign key (ID_USUARIO)
-      references USUARIO (ID_USUARIO) on delete restrict on update restrict;
+alter table endereco add constraint fk_reference_4 foreign key (id_usuario)
+      references usuario (id_usuario) on delete restrict on update restrict;
 
-alter table HISTORICO add constraint FK_REFERENCE_31 foreign key (ID_PEDIDO)
-      references PEDIDO (ID_PEDIDO) on delete restrict on update restrict;
+alter table historico add constraint fk_reference_31 foreign key (id_pedido)
+      references pedido (id_pedido) on delete restrict on update restrict;
 
-alter table INDICACAO add constraint FK_REFERENCE_17 foreign key (ID_USUARIO)
-      references USUARIO (ID_USUARIO) on delete restrict on update restrict;
+alter table indicacao add constraint fk_reference_17 foreign key (id_usuario)
+      references usuario (id_usuario) on delete restrict on update restrict;
 
-alter table INDICACAO add constraint FK_REFERENCE_18 foreign key (ID_PRODUTO)
-      references PRODUTO (ID_PRODUTO) on delete restrict on update restrict;
+alter table indicacao add constraint fk_reference_18 foreign key (id_produto)
+      references produto (id_produto) on delete restrict on update restrict;
 
-alter table INDICACAO add constraint FK_REFERENCE_19 foreign key (ID_COMBO)
-      references COMBO (ID_COMBO) on delete restrict on update restrict;
+alter table indicacao add constraint fk_reference_19 foreign key (id_combo)
+      references combo (id_combo) on delete restrict on update restrict;
 
-alter table INDICACAO add constraint FK_REFERENCE_21 foreign key (ID_EMAIL)
-      references EMAIL (ID_EMAIL) on delete restrict on update restrict;
+alter table indicacao add constraint fk_reference_21 foreign key (id_email)
+      references email (id_email) on delete restrict on update restrict;
 
-alter table ITEM_PRODUTO add constraint FK_REFERENCE_5 foreign key (ID_UNIDADE)
-      references UNIDADE (ID_UNIDADE) on delete restrict on update restrict;
+alter table item_produto add constraint fk_reference_5 foreign key (id_unidade)
+      references unidade (id_unidade) on delete restrict on update restrict;
 
-alter table ITEM_PRODUTO add constraint FK_REFERENCE_6 foreign key (ID_IMAGEM)
-      references IMAGEM (ID_IMAGEM) on delete restrict on update restrict;
+alter table item_produto add constraint fk_reference_6 foreign key (id_imagem)
+      references imagem (id_imagem) on delete restrict on update restrict;
 
-alter table ITENCAO_PRODUTO add constraint FK_REFERENCE_22 foreign key (ID_USUARIO)
-      references USUARIO (ID_USUARIO) on delete restrict on update restrict;
+alter table itencao_produto add constraint fk_reference_22 foreign key (id_usuario)
+      references usuario (id_usuario) on delete restrict on update restrict;
 
-alter table ITENCAO_PRODUTO add constraint FK_REFERENCE_23 foreign key (ID_PRODUTO)
-      references PRODUTO (ID_PRODUTO) on delete restrict on update restrict;
+alter table itencao_produto add constraint fk_reference_23 foreign key (id_produto)
+      references produto (id_produto) on delete restrict on update restrict;
 
-alter table MENSAGEM add constraint FK_REFERENCE_24 foreign key (ID_USUARIO)
-      references USUARIO (ID_USUARIO) on delete restrict on update restrict;
+alter table mensagem add constraint fk_reference_24 foreign key (id_usuario)
+      references usuario (id_usuario) on delete restrict on update restrict;
 
-alter table PAGAMENTO add constraint FK_REFERENCE_35 foreign key (ID_FORMA_PAGAMENTO)
-      references FORMA_PAGAMENTO (ID_FORMA_PAGAMENTO) on delete restrict on update restrict;
+alter table pagamento add constraint fk_reference_35 foreign key (id_forma_pagamento)
+      references forma_pagamento (id_forma_pagamento) on delete restrict on update restrict;
 
-alter table PAGAMENTO add constraint FK_REFERENCE_36 foreign key (ID_IMAGEM)
-      references IMAGEM (ID_IMAGEM) on delete restrict on update restrict;
+alter table pagamento add constraint fk_reference_36 foreign key (id_imagem)
+      references imagem (id_imagem) on delete restrict on update restrict;
 
-alter table PAGAMENTO add constraint FK_REFERENCE_37 foreign key (ID_PEDIDO)
-      references PEDIDO (ID_PEDIDO) on delete restrict on update restrict;
+alter table pagamento add constraint fk_reference_37 foreign key (id_pedido)
+      references pedido (id_pedido) on delete restrict on update restrict;
 
-alter table PAGAMENTO add constraint FK_REFERENCE_38 foreign key (ID_STATUS)
-      references STATUS (ID_STATUS) on delete restrict on update restrict;
+alter table pagamento add constraint fk_reference_38 foreign key (id_status)
+      references status (id_status) on delete restrict on update restrict;
 
-alter table PEDIDO add constraint FK_REFERENCE_27 foreign key (ID_USUARIO)
-      references USUARIO (ID_USUARIO) on delete restrict on update restrict;
+alter table pedido add constraint fk_reference_27 foreign key (id_usuario)
+      references usuario (id_usuario) on delete restrict on update restrict;
 
-alter table PEDIDO add constraint FK_REFERENCE_28 foreign key (ID_TRANSPORTADORA)
-      references TRANSPORTADORA (ID_TRANSPORTADORA) on delete restrict on update restrict;
+alter table pedido add constraint fk_reference_28 foreign key (id_transportadora)
+      references transportadora (id_transportadora) on delete restrict on update restrict;
 
-alter table PEDIDO add constraint FK_REFERENCE_29 foreign key (ID_CARRINHO)
-      references CARRINHO (ID_CARRINHO) on delete restrict on update restrict;
+alter table pedido add constraint fk_reference_29 foreign key (id_carrinho)
+      references carrinho (id_carrinho) on delete restrict on update restrict;
 
-alter table PEDIDO add constraint FK_REFERENCE_30 foreign key (ID_ANDAMENTO_ENTREGA)
-      references ANDAMENTO_ENTREGA (ID_ANDAMENTO_ENTREGA) on delete restrict on update restrict;
+alter table pedido add constraint fk_reference_30 foreign key (id_andamento_entrega)
+      references andamento_entrega (id_andamento_entrega) on delete restrict on update restrict;
 
-alter table PONTOS_USUARIO add constraint FK_REFERENCE_25 foreign key (ID_PONTOS)
-      references PONTOS (ID_PONTOS) on delete restrict on update restrict;
+alter table pontos_usuario add constraint fk_reference_25 foreign key (id_pontos)
+      references pontos (id_pontos) on delete restrict on update restrict;
 
-alter table PONTOS_USUARIO add constraint FK_REFERENCE_26 foreign key (ID_PEDIDO)
-      references PEDIDO (ID_PEDIDO) on delete restrict on update restrict;
+alter table pontos_usuario add constraint fk_reference_26 foreign key (id_pedido)
+      references pedido (id_pedido) on delete restrict on update restrict;
 
-alter table PRODUTO add constraint FK_REFERENCE_10 foreign key (ID_ESTOQUE)
-      references ESTOQUE (ID_ESTOQUE) on delete restrict on update restrict;
+alter table produto add constraint fk_reference_10 foreign key (id_estoque)
+      references estoque (id_estoque) on delete restrict on update restrict;
 
-alter table PRODUTO add constraint FK_REFERENCE_7 foreign key (ID_UNIDADE)
-      references UNIDADE (ID_UNIDADE) on delete restrict on update restrict;
+alter table produto add constraint fk_reference_7 foreign key (id_unidade)
+      references unidade (id_unidade) on delete restrict on update restrict;
 
-alter table PRODUTO add constraint FK_REFERENCE_8 foreign key (ID_IMAGEM)
-      references IMAGEM (ID_IMAGEM) on delete restrict on update restrict;
+alter table produto add constraint fk_reference_8 foreign key (id_imagem)
+      references imagem (id_imagem) on delete restrict on update restrict;
 
-alter table PRODUTO add constraint FK_REFERENCE_9 foreign key (ID_CATEGORIA)
-      references CATEGORIA (ID_CATEGORIA) on delete restrict on update restrict;
+alter table produto add constraint fk_reference_9 foreign key (id_categoria)
+      references categoria (id_categoria) on delete restrict on update restrict;
 
-alter table PRODUTO_FORNECEDOR add constraint FK_REFERENCE_13 foreign key (ID_PRODUTO)
-      references PRODUTO (ID_PRODUTO) on delete restrict on update restrict;
+alter table produto_fornecedor add constraint fk_reference_13 foreign key (id_produto)
+      references produto (id_produto) on delete restrict on update restrict;
 
-alter table PRODUTO_FORNECEDOR add constraint FK_REFERENCE_14 foreign key (ID_FORNECEDOR)
-      references FORNECEDOR (ID_FORNECEDOR) on delete restrict on update restrict;
+alter table produto_fornecedor add constraint fk_reference_14 foreign key (id_fornecedor)
+      references fornecedor (id_fornecedor) on delete restrict on update restrict;
 
-alter table PRODUTO_ITEM_PRODUTO add constraint FK_REFERENCE_15 foreign key (ID_ITEM_PRODUTO)
-      references ITEM_PRODUTO (ID_ITEM_PRODUTO) on delete restrict on update restrict;
+alter table produto_item_produto add constraint fk_reference_15 foreign key (id_item_produto)
+      references item_produto (id_item_produto) on delete restrict on update restrict;
 
-alter table PRODUTO_ITEM_PRODUTO add constraint FK_REFERENCE_16 foreign key (ID_PRODUTO)
-      references PRODUTO (ID_PRODUTO) on delete restrict on update restrict;
+alter table produto_item_produto add constraint fk_reference_16 foreign key (id_produto)
+      references produto (id_produto) on delete restrict on update restrict;
 
-alter table QUALIFICACAO_PRODUTO add constraint FK_REFERENCE_40 foreign key (ID_USUARIO)
-      references USUARIO (ID_USUARIO) on delete restrict on update restrict;
+alter table qualificacao_produto add constraint fk_reference_40 foreign key (id_usuario)
+      references usuario (id_usuario) on delete restrict on update restrict;
 
-alter table QUALIFICACAO_PRODUTO add constraint FK_REFERENCE_41 foreign key (ID_PRODUTO)
-      references PRODUTO (ID_PRODUTO) on delete restrict on update restrict;
+alter table qualificacao_produto add constraint fk_reference_41 foreign key (id_produto)
+      references produto (id_produto) on delete restrict on update restrict;
 
-alter table SUB_CATEGORIA add constraint FK_REFERENCE_11 foreign key (ID_CATEGORIA)
-      references CATEGORIA (ID_CATEGORIA) on delete restrict on update restrict;
+alter table sub_categoria add constraint fk_reference_11 foreign key (id_categoria)
+      references categoria (id_categoria) on delete restrict on update restrict;
 
-alter table TIPO_TRANSPORTE add constraint FK_REFERENCE_44 foreign key (ID_UNIDADE)
-      references UNIDADE (ID_UNIDADE) on delete restrict on update restrict;
+alter table tipo_transporte add constraint fk_reference_44 foreign key (id_unidade)
+      references unidade (id_unidade) on delete restrict on update restrict;
 
-alter table TRANSPORTADORA add constraint FK_REFERENCE_45 foreign key (ID_ENDERECO)
-      references ENDERECO (ID_ENDERECO) on delete restrict on update restrict;
+alter table transportadora add constraint fk_reference_45 foreign key (id_endereco)
+      references endereco (id_endereco) on delete restrict on update restrict;
 
-alter table TRANSPORTADOR_TIPO_TRANSPORTE add constraint FK_REFERENCE_42 foreign key (ID_TRANSPORTADORA)
-      references TRANSPORTADORA (ID_TRANSPORTADORA) on delete restrict on update restrict;
+alter table transportador_tipo_transporte add constraint fk_reference_42 foreign key (id_transportadora)
+      references transportadora (id_transportadora) on delete restrict on update restrict;
 
-alter table TRANSPORTADOR_TIPO_TRANSPORTE add constraint FK_REFERENCE_43 foreign key (ID_TIPO_TRANSPORTE)
-      references TIPO_TRANSPORTE (ID_TIPO_TRANSPORTE) on delete restrict on update restrict;
+alter table transportador_tipo_transporte add constraint fk_reference_43 foreign key (id_tipo_transporte)
+      references tipo_transporte (id_tipo_transporte) on delete restrict on update restrict;
 
-alter table USUARIO add constraint FK_REFERENCE_1 foreign key (ID_CLASSIFICACAO_USUARIO)
-      references CLASSIFICACAO_USUARIO (ID_CLASSIFICACAO_USUARIO) on delete restrict on update restrict;
+alter table usuario add constraint fk_reference_1 foreign key (id_classificacao_usuario)
+      references classificacao_usuario (id_classificacao_usuario) on delete restrict on update restrict;
 
-alter table USUARIO add constraint FK_REFERENCE_2 foreign key (ID_IMAGEM)
-      references IMAGEM (ID_IMAGEM) on delete restrict on update restrict;
+alter table usuario add constraint fk_reference_2 foreign key (id_imagem)
+      references imagem (id_imagem) on delete restrict on update restrict;
 
-alter table USUARIO_ALCADA add constraint FK_REFERENCE_33 foreign key (ID_ALCADAS)
-      references ALCADAS (ID_ALCADAS) on delete restrict on update restrict;
+alter table usuario_alcada add constraint fk_reference_33 foreign key (id_alcadas)
+      references alcadas (id_alcadas) on delete restrict on update restrict;
 
-alter table USUARIO_ALCADA add constraint FK_REFERENCE_34 foreign key (ID_USUARIO)
-      references USUARIO (ID_USUARIO) on delete restrict on update restrict;
-
+alter table usuario_alcada add constraint fk_reference_34 foreign key (id_usuario)
+      references usuario (id_usuario) on delete restrict on update restrict;
